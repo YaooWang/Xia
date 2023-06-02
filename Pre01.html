@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Getting Started with Remote Sensing</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Yao Wang" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Getting Started with Remote Sensing
+]
+.subtitle[
+## ⚔<br/>with xaringan
+]
+.author[
+### Yao Wang
+]
+.institute[
+### RStudio, PBC
+]
+.date[
+### 2023/02/05
+]
+
+---
+
+
+class: center, middle
+
+# Summary
+### In this week, we begin to explore the area of remote sensing data and related analysis methods. In this I learned the basics of loading sentinel and landsat data. Knowing the difference between active and passive romote sensing and how the electromagne tic waves interact with Earth's surface and atmosphere. And be familiar with four resolutions of remotely sensed data. QGIS, SNAP and R are also used in practical for preliminary analysis of remote sensing data such as resampling, cropping, correction etc.
+
+---
+
+knitr::include_graphics('03.jpg')
+
+---
+class: center, middle
+
+## Application
+Remote sensing is achieved by detecting the ground target, acquiring information about the target, and then processing the information acquired so that it can understand a nd describe the target, it acquires information through sensors. The sensors collect information from the surface of the ground which is the electromagnetic waves radiated from the surface of any feature and the reflected incident electromagnetic waves.
+
+One application of this is the analysis of remotely sensed imagery through the reflectance of a feature's wave spectrum. The reflectance spectrum of an object is limited to the ultraviolet, visible and infrared bands, especially the latter two. The characte ristics of an object's reflectance spectrum depend largely on the choice of wavelength at which the object interacts with the incident radiation. As shown in the figure below, the reflectance spectra of four features citrus, tomato, maize and cotton ha ve different shapes[@brady_remote_2021].
+
+---
+
+class: center, middle
+
+## Application
+The different reflectance of features in different wavelengths makes it easy to think of using multiple wavelengths for feature detection, such as multi spectral scanners a nd other sensors for feature spectral analysis and identification, and through the fusion of remote sensing data from multiple sources and false color synthesis, which is becoming an important way of processing remote sensing images. It is also color synthesis, which is becoming an important way of processing remote sensing images. It is also because of because of the characteristic that different features have different reflectance at different wavelengths that the characteristic that different features have different reflectance at different wavelengths that the reflectance curves of objects are widely used in the analysis and evaluation of remote sensing images as the reflectance curves of objects are widely used in the analysis and evaluation of remote sensing images as a physical basis for interpretation and classifa physical basis for interpretation and classification.
+
+---
+class: center, middle
+
+## Application
+Satellite radar images and ancillary information can also be used in other areas. For example, we can use it to detect flood areas at their peak and evaluates its potential with mapping. The procedure wass tested on the catastrophic flood that occurred in Italy. Two ERS 1 synthetic aperture radar(SAR) images were processed, one acquired one month before the flood and the other acquired three days after the event. Visual interpretation and two different thre sholding techniques were performed. The flood map derived shows only a small fraction of the satellite overpass. To overcome this limitation, the authors developed a new method to estimate the flooded area at the peak time by integrating the flooded area from SAR imagery with digital topographic data from GIS technique[@brivio2002].
+
+---
+
+class: center, middle
+
+## Application
+Some recent studies also shown UAV remote sensing techniques have many applications. Like spatial ecology, forest studies and other monitoring applications('Unmanned aerial vehicles for environmental applications',2017). Before the development of UAVs, the majority of spectral datasets was made by satellites and manned aircraft[@aasen_quantitative_2018]. By the rapidly developing technology, many new types of sensors make data quality assurance. For example, this picture shows the process from collect information to make data product[@aasen_quantitative_2018].
+
+---
+
+class: center, middle
+
+## Personal reflection
+When I first came across the analysis of remote sensing data, I felt that a wide range of physics, electronics, space science and information science are used in the acquisition of remote sensing data. It is its comprehensive nature that makes it such an interesting discipline, and with the help of remote sensing technology we are able to see the world from a different perspective.
+
+For example, through PCA analysis. We can obtain remote sensing images that highlight the required elements, which helps us to carry out further analysis on a large scale. When doing the practical in this chapter, I always had some minor problems in the process of using snap , such as the failure to recognize the formulae in the next step due to resampling failure, and sometimes computer memory problems in the calculation, which I did not find at the beginning and only solved through many attempts.
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
